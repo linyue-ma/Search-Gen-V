@@ -1,0 +1,29 @@
+data:
+  gold_path: /path/to/your/gold.jsonl
+  input_path: /path/to/your/input.jsonl
+evaluation:
+  batch_size: 10
+  num_runs: 1
+  num_workers: 8
+logging:
+  eval_log_dir: logs/eval
+  llm_log_dir: logs/llm
+  log_level: INFO
+  save_predictions: true
+metrics:
+  avg_k:
+  - 1
+  - 5
+  - 10
+  pass_k:
+  - 1
+  - 5
+  - 10
+model:
+  api_key: EMPTY
+  base_url: http://localhost:8000/v1
+  enable_thinking: true
+  max_tokens: 1024
+  name: /path/to/your/model
+  temperature: 0.7
+  top_p: 0.95

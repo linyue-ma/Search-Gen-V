@@ -1,0 +1,48 @@
+# Enhanced Nugget Evaluation Configuration (v2.0)
+# Demonstrates new multi-format support and error recovery features
+
+model:
+  base_url: "http://localhost:8000/v1"
+  api_key: "EMPTY"
+  name: "/path/to/your/model"
+  temperature: 0.7
+  top_p: 0.95
+  max_tokens: 1024
+  enable_thinking: true
+  
+  # Multi-format output support
+  format_type: "adaptive"              # Controls prompt format, parsing tries all formats automatically
+  error_handling: "sequential"         # Preserve partial results instead of discarding
+  partial_recovery: true               # Enable recovery of partial predictions
+
+data:
+  input_path: "/path/to/your/input.jsonl"
+  gold_path: "/path/to/your/gold.jsonl"
+
+evaluation:
+  batch_size: 10
+  num_workers: 8
+  num_runs: 1
+
+metrics:
+  avg_k: [1, 5, 10]
+  pass_k: [1, 5, 10]
+  maj_k: [3, 5, 7]
+
+logging:
+  eval_log_dir: "logs/eval"
+  llm_log_dir: "logs/llm"
+  save_predictions: true
+  log_level: "INFO"
+  
+  # NEW v2.0 Features: Enhanced reporting
+  report_detail_level: "full"          # full|standard|minimal
+  show_format_analysis: true           # Show which formats the model prefers
+  show_error_breakdown: true           # Detailed error type analysis
+  show_batch_recovery_stats: true      # Show partial recovery statistics
+
+# Configuration Notes:
+# - format_type "adaptive" tells the model it can use any format, parsing automatically tries all formats
+# - error_handling "sequential" preserves partial results from truncated responses  
+# - Enhanced reporting provides detailed analysis of model behavior and error patterns
+# - All legacy configurations remain fully compatible

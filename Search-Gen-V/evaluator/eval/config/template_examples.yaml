@@ -1,0 +1,168 @@
+# Unified prompt_type configuration examples
+
+
+# Example 1: Legacy mode (传统模式)
+# 使用原有的多格式系统
+legacy_example:
+  model:
+    base_url: "http://localhost:8000/v1"
+    api_key: "EMPTY"
+    name: "/path/to/your/model"
+    temperature: 0.7
+    max_tokens: 512
+    enable_thinking: false
+    
+    # Configuration
+    prompt_type: "legacy"
+    format_type: "adaptive"  # or json, markdown, csv, etc.
+    error_handling: "sequential"
+    partial_recovery: true
+
+  data:
+    input_path: "/path/to/input.jsonl"
+    gold_path: "/path/to/gold.jsonl"
+
+  evaluation:
+    batch_size: 10
+    num_workers: 4
+    num_runs: 1
+
+  logging:
+    eval_log_dir: "logs/eval_no_reasoning"
+    llm_log_dir: "logs/llm_no_reasoning"
+    show_format_analysis: true
+
+---
+# Example 2: No reasoning mode (无思考推理)
+# 仅输出标签，不包含推理过程
+no_reasoning_example:
+  model:
+    base_url: "http://localhost:8000/v1"
+    api_key: "EMPTY"
+    name: "/path/to/your/model"
+    temperature: 0.7
+    max_tokens: 64
+    enable_thinking: true
+    
+    # Configuration
+    prompt_type: "no_reasoning"
+    format_type: "json"  # Can be any format
+    error_handling: "sequential"
+    partial_recovery: true
+
+  data:
+    input_path: "/path/to/input.jsonl"
+    gold_path: "/path/to/gold.jsonl"
+
+  evaluation:
+    batch_size: 5  # Smaller batches for reasoning mode
+    num_workers: 4
+    num_runs: 1
+
+  logging:
+    eval_log_dir: "logs/eval_short_cot"
+    llm_log_dir: "logs/llm_short_cot"
+    show_format_analysis: true
+    show_error_breakdown: true
+    show_batch_recovery_stats: true
+
+---
+# Example 3: Short CoT mode (短链思考模式)
+# 包含结构化推理，适合一般模型
+short_cot_example:
+  model:
+    base_url: "http://localhost:8000/v1" 
+    api_key: "EMPTY"
+    name: "/path/to/your/model"
+    temperature: 0.7
+    max_tokens: 1024
+    enable_thinking: true
+    
+    # Configuration
+    prompt_type: "short_cot"
+    format_type: "json"  # Can use any format
+    error_handling: "sequential"
+    partial_recovery: true
+
+  data:
+    input_path: "/path/to/input.jsonl"
+    gold_path: "/path/to/gold.jsonl"
+
+  evaluation:
+    batch_size: 3  # Even smaller batches for long reasoning
+    num_workers: 2  # Fewer workers to avoid overwhelming the model
+    num_runs: 1
+
+  logging:
+    eval_log_dir: "logs/eval_long_cot"
+    llm_log_dir: "logs/llm_long_cot"
+    save_predictions: true
+    show_format_analysis: true
+    show_error_breakdown: true
+    show_batch_recovery_stats: true
+    report_detail_level: "full"
+
+---
+# Example 4: Long CoT mode (长链思考模式)
+# 支持自由形式的思考 + 结构化推理，适合推理模型
+long_cot_example:
+  model:
+    base_url: "http://localhost:8000/v1"
+    api_key: "EMPTY"
+    name: "/path/to/your/reasoning-model"  # e.g., DeepSeek-R1, Qwen3
+    temperature: 0.7
+    max_tokens: 2048  # More tokens for thinking
+    enable_thinking: true
+    
+    # Configuration
+    prompt_type: "long_cot"
+    format_type: "json"  # Can use any format
+    error_handling: "sequential"
+    partial_recovery: true
+
+  data:
+    input_path: "/path/to/input.jsonl"
+    gold_path: "/path/to/gold.jsonl"
+
+  evaluation:
+    batch_size: 3  # Even smaller batches for long reasoning
+    num_workers: 2  # Fewer workers to avoid overwhelming the model
+    num_runs: 1
+
+  logging:
+    eval_log_dir: "logs/eval_long_cot"
+    llm_log_dir: "logs/llm_long_cot"
+    save_predictions: true
+    show_format_analysis: true
+    show_error_breakdown: true
+    show_batch_recovery_stats: true
+    report_detail_level: "full"
+
+---
+# Example 5: Multi-format testing (多格式测试)
+# 测试同一 prompt_type 下不同格式的输出
+
+multi_format_example:
+  model:
+    base_url: "http://localhost:8000/v1"
+    api_key: "EMPTY"
+    name: "/path/to/your/model"
+    temperature: 0.7
+    max_tokens: 512
+    enable_thinking: true
+    
+    # Same prompt, different formats
+    prompt_type: "short_cot"  # Any prompt type
+    format_type: "markdown"    # Try: json, markdown, csv, yaml, xml, etc.
+    error_handling: "sequential"
+    partial_recovery: true
+    
+  evaluation:
+    batch_size: 10
+    num_workers: 4
+    num_runs: 5  # Multiple runs to test format consistency
+
+  logging:
+    eval_log_dir: "logs/eval_multi_format"
+    llm_log_dir: "logs/llm_multi_format"
+    show_format_analysis: true

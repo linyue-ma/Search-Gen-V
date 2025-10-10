@@ -1,0 +1,31 @@
+# Base configuration template for nugget evaluation
+# Copy and modify this file for your specific needs
+
+model:
+  base_url: "http://localhost:8000/v1"
+  api_key: "EMPTY"
+  name: "/path/to/your/model/checkpoint"  # Update this path
+  temperature: 0.7
+  top_p: 0.95
+  max_tokens: 1024
+  enable_thinking: true
+
+data:
+  input_path: "/path/to/your/input.jsonl"  # Update this path
+  gold_path: "/path/to/your/gold.jsonl"    # Update this path
+
+evaluation:
+  batch_size: 10
+  num_workers: 8
+  num_runs: 1
+
+metrics:
+  avg_k: [1, 4, 8, 16]
+  pass_k: [1, 4, 8, 16]
+  maj_k: [1, 3, 5, 7]
+
+logging:
+  eval_log_dir: "logs/eval"
+  llm_log_dir: "logs/llm"
+  save_predictions: true
+  log_level: "INFO"
