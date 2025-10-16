@@ -127,3 +127,12 @@ nugget-eval --config config/my_multi.yaml --num-runs 16
 ```
 ---
 
+## Citation
+
+@article{ma2025searchgenv,
+  title={AN EFFICIENT RUBRIC-BASED GENERATIVE VERIFIER FOR SEARCH-AUGMENTED LLMS},
+  author={Ma, Linyue and Xu, Yilong and Long, Xiang and Zheng, Zhi},
+  journal={Proceedings of XYZ Conference},
+  year={2025},
+  url={https://github.com/linyue-ma/Search-Gen-V}
+}
