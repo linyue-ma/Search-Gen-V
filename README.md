@@ -25,36 +25,40 @@ We have already uploaded the data and models to Hugging Face. You can access the
 
 ## Installation
 
-### Update Python and Configure the Virtual Environment using uv
-‘’‘
-apt update
-apt install -y python3.10 python3.10-venv
+### 1. Update Python and Configure a Virtual Environment
+```bash
+# Update package lists
+sudo apt update
+
+# Install Python 3.10 and venv module
+sudo apt install -y python3.10 python3.10-venv python3-pip
 
 # Create a virtual environment
-python3 -m venv ~/.python/veRL-multiturn-rollout
+python3.10 -m venv ~/.python/veRL-multiturn-rollout
 
 # Activate the virtual environment
 source ~/.python/veRL-multiturn-rollout/bin/activate
+```
 
-# Install uv
-python3 -m pip install uv
-‘’‘
+### 2. Update Python and Configure a Virtual Environment
 
 ### Install veRL Upstream
-‘’‘
+```bash
+# Clone the repository
 cd ~
 git clone https://github.com/linyue-ma/Search-Gen-V.git
 cd Search-Gen-V
 
-# Install verl
-python3 -m uv pip install .
-python3 -m uv pip install -r ./requirements_sglang.txt
+# Install veRL
+pip install .
 
-# Manually install flash-attn
-python3 -m uv pip install wheel
-python3 -m uv pip install packaging
-python3 -m uv pip install flash-attn --no-build-isolation --no-deps
-’‘’
+# Install additional requirements
+pip install -r ./requirements_sglang.txt
+
+# Manually install flash-attn dependencies
+pip install wheel packaging
+pip install flash-attn --no-build-isolation --no-deps
+```
 
 ## Quick start
 
