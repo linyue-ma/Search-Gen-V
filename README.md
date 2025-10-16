@@ -1,4 +1,3 @@
-=======
 # 🚀 Search-Gen-V
 
 This project introduces the **“nugget-as-rubric”** paradigm, which decomposes information into atomic, independently verifiable units to build a unified reward framework for **verifiable evaluation**.
@@ -13,7 +12,6 @@ Based on this paradigm, we develop **Search-Gen-V**, a lightweight **generative 
 - ⚡ Supports batch, multi-rubric verification, achieving high accuracy with reduced computational cost.
 
 The proposed framework demonstrates **strong interpretability, robustness, and scalability** across both short- and long-form workloads, providing a **unified, reliable, and efficient reward modeling solution** for **Search-Augmented LLMs** in **Verifiable Reinforcement Learning (RLVR)**.
-Reinforcement Learning (RLVR).
 ---
 
 ## 📚 目录 / Table of Contents
