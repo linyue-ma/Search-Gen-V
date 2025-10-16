@@ -1,4 +1,4 @@
-# 🚀 Search-Gen-V
+# Search-Gen-V
 
 This project introduces the **“nugget-as-rubric”** paradigm, which decomposes information into atomic, independently verifiable units to build a unified reward framework for **verifiable evaluation**.
 
@@ -12,9 +12,10 @@ Based on this paradigm, we develop **Search-Gen-V**, a lightweight **generative 
 - ⚡ Supports batch, multi-rubric verification, achieving high accuracy with reduced computational cost.
 
 The proposed framework demonstrates **strong interpretability, robustness, and scalability** across both short- and long-form workloads, providing a **unified, reliable, and efficient reward modeling solution** for **Search-Augmented LLMs** in **Verifiable Reinforcement Learning (RLVR)**.
+
 ---
 
-## 📚 目录 / Table of Contents
+## Table of Contents
 - [项目简介](#项目简介)
 - [环境依赖](#环境依赖)
 - [安装与运行](#安装与运行)
@@ -26,9 +27,11 @@ The proposed framework demonstrates **strong interpretability, robustness, and s
 
 ---
 
-## 🧩 项目简介
+## 项目简介
 
-
+**Search-Gen-V** is an open-source framework for **verifiable reward modeling** in Search-Augmented LLMs.  
+It introduces the *nugget-as-rubric* paradigm, which transforms fine-grained information nuggets into structured evaluation rubrics for both short- and long-form reasoning tasks.  
+Built upon **Qwen3-4B** and the **veRL** framework, Search-Gen-V unifies **SFT, RM, and PPO** stages under a verifiable learning pipeline, enabling models to reason, verify, and self-improve through structured feedback.
 ---
 
 ## ⚙️ 环境依赖
