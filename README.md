@@ -23,6 +23,8 @@ We have already uploaded the data and models to Hugging Face. You can access the
 
 ---
 
+## nugget-as-rubric
+
 ## Installation
 
 ### 1. Update Python and Configure a Virtual Environment
