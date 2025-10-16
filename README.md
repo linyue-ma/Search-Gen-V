@@ -21,3 +21,41 @@ We have already uploaded the data and models to Hugging Face. You can access the
 - data: https://huggingface.co/datasets/lnm1p/Search-Gen-V
 - model: https://huggingface.co/lnm1p/search-gen-v-4b
 
+---
+
+## Installation
+
+### Update Python and Configure the Virtual Environment using uv
+‘’‘
+apt update
+apt install -y python3.10 python3.10-venv
+
+# Create a virtual environment
+python3 -m venv ~/.python/veRL-multiturn-rollout
+
+# Activate the virtual environment
+source ~/.python/veRL-multiturn-rollout/bin/activate
+
+# Install uv
+python3 -m pip install uv
+‘’‘
+
+### Install veRL Upstream
+‘’‘
+cd ~
+git clone https://github.com/linyue-ma/Search-Gen-V.git
+cd Search-Gen-V
+
+# Install verl
+python3 -m uv pip install .
+python3 -m uv pip install -r ./requirements_sglang.txt
+
+# Manually install flash-attn
+python3 -m uv pip install wheel
+python3 -m uv pip install packaging
+python3 -m uv pip install flash-attn --no-build-isolation --no-deps
+’‘’
+
+## Quick start
+
+
