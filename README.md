@@ -26,6 +26,7 @@ We have already uploaded the data and models to Hugging Face. You can access the
 ## Installation
 
 ### 1. Update Python and Configure a Virtual Environment
+
 ```bash
 # Update package lists
 sudo apt update
@@ -42,7 +43,6 @@ source ~/.python/veRL-multiturn-rollout/bin/activate
 
 ### 2. Update Python and Configure a Virtual Environment
 
-### Install veRL Upstream
 ```bash
 # Clone the repository
 cd ~
@@ -59,6 +59,7 @@ pip install -r ./requirements_sglang.txt
 pip install wheel packaging
 pip install flash-attn --no-build-isolation --no-deps
 ```
+---
 
 ## Quick start
 
