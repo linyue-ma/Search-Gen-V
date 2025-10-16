@@ -74,6 +74,56 @@ bash Search-Gen-V/trainer/train_dapo.sh
 ```
 ---
 
-## Evauator
+## Evaluator
 
+The evaluator module is used to assess model outputs based on the nugget-as-rubric paradigm.  
+Detailed instructions and usage examples can be found at: `/Search-Gen-V/evaluator/eval/README.md`
+###  Quick Start
+
+#### 1. Environment Setup
+```bash
+# Install uv if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Setup the environment
+./setup.sh
+source .venv/bin/activate
+```
+
+#### 2. Generate Configuration
+```bash
+# Generate configuration templates
+nugget-eval --generate-config config/my_thinking.yaml --template-type thinking
+nugget-eval --generate-config config/my_multi.yaml --template-type multi_run
+```
+
+#### 3. Configure Your Evaluation
+Edit your configuration file:
+```yaml
+model:
+  base_url: "http://localhost:8000/v1"
+  name: "/path/to/your/model"
+  format_type: "adaptive"        # Controls prompt format
+  error_handling: "sequential"   # Preserve partial results
+  enable_thinking: true
+
+data:
+  input_path: "/path/to/input.jsonl"
+  gold_path: "/path/to/gold.jsonl"
+
+evaluation:
+  num_runs: 1          # Single run (1) or multi-run (16+)
+  batch_size: 10
+  num_workers: 8
+```
+
+#### 4. Run Evaluation
+```bash
+# Single-run evaluation
+nugget-eval --config config/my_thinking.yaml
+
+# Multi-run statistical analysis  
+nugget-eval --config config/my_multi.yaml --num-runs 16
+```
+---
 
