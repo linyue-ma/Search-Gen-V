@@ -35,10 +35,10 @@ sudo apt update
 sudo apt install -y python3.10 python3.10-venv python3-pip
 
 # Create a virtual environment
-python3.10 -m venv ~/.python/veRL-multiturn-rollout
+python3.10 -m venv ~/.python/search-gen-v
 
 # Activate the virtual environment
-source ~/.python/veRL-multiturn-rollout/bin/activate
+source ~/.python/search-gen-v/bin/activate
 ```
 
 ### 2. Install veRL and Dependencies
@@ -62,5 +62,18 @@ pip install flash-attn --no-build-isolation --no-deps
 ---
 
 ## Quick start
+
+### 1. SFT
+```bash
+bash Search-Gen-V/trainer/train_sft.sh
+```
+
+### 2. DAPO
+```bash
+bash Search-Gen-V/trainer/train_dapo.sh
+```
+---
+
+## Evauator
 
 
