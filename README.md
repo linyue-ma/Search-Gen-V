@@ -41,7 +41,7 @@ python3.10 -m venv ~/.python/veRL-multiturn-rollout
 source ~/.python/veRL-multiturn-rollout/bin/activate
 ```
 
-### 2. Update Python and Configure a Virtual Environment
+### 2. Install veRL and Dependencies
 
 ```bash
 # Clone the repository
