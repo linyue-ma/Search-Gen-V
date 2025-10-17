@@ -91,7 +91,6 @@ bash Search-Gen-V/trainer/train_dapo.sh
 
 The evaluator module is used to assess model outputs based on the nugget-as-rubric paradigm.  
 Detailed instructions and usage examples can be found at: `/Search-Gen-V/evaluator/eval/README.md`.
-
 The evaluation input data is provided by data-eval: [Search-Gen-V-eval](https://huggingface.co/datasets/lnm1p/Search-Gen-V-eval).
 ###  Quick Start
 
