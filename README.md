@@ -18,7 +18,9 @@ The proposed framework demonstrates **strong interpretability, robustness, and s
 ## Datasets
 
 We have already uploaded the data and models to Hugging Face. You can access them and modify the corresponding path variables in the running script:
-- data: https://huggingface.co/datasets/lnm1p/Search-Gen-V
+- data-tain: https://huggingface.co/datasets/lnm1p/Search-Gen-V
+- data-raw: https://huggingface.co/datasets/lnm1p/Search-Gen-V-raw
+- data-eval: https://huggingface.co/datasets/lnm1p/Search-Gen-V-eval
 - model: https://huggingface.co/lnm1p/search-gen-v-4b
 
 ---
@@ -44,7 +46,6 @@ source ~/.python/search-gen-v/bin/activate
 ```
 
 ### 2. Install veRL and Dependencies
-
 ```bash
 # Clone the repository
 cd ~
@@ -64,13 +65,23 @@ pip install flash-attn --no-build-isolation --no-deps
 ---
 
 ## Quick start
-
-### 1. SFT
+### 1. Data
+You can generate personalized system messages and user messages for the data-raw dataset available at [Search-Gen-V-raw](https://huggingface.co/datasets/lnm1p/Search-Gen-V-raw) using the following procedure:
+- For SFT:
+```bash
+python Search-Gen-V/data/preprocess/sft_data.py
+```
+- For DAPO:
+```bash
+python Search-Gen-V/data/preprocess/dapo_data.py
+```
+You can also directly train your model using the data-train dataset: [Search-Gen-V](https://huggingface.co/datasets/lnm1p/Search-Gen-V).
+### 2. SFT
 ```bash
 bash Search-Gen-V/trainer/train_sft.sh
 ```
 
-### 2. DAPO
+### 3. DAPO
 ```bash
 bash Search-Gen-V/trainer/train_dapo.sh
 ```
@@ -80,6 +91,7 @@ bash Search-Gen-V/trainer/train_dapo.sh
 
 The evaluator module is used to assess model outputs based on the nugget-as-rubric paradigm.  
 Detailed instructions and usage examples can be found at: `/Search-Gen-V/evaluator/eval/README.md`
+The evaluation input data is provided by data-eval: [Search-Gen-V-eval](https://huggingface.co/datasets/lnm1p/Search-Gen-V-eval).
 ###  Quick Start
 
 #### 1. Environment Setup
