@@ -199,8 +199,8 @@ logging:
 ## 📁 Project Structure
 
 ```
-examples/search-gen-v/eval/
-├── nugget_eval/              # Main package
+Search-Gen-V/evaluator/
+├── eval/                    # Main package
 │   ├── __init__.py
 │   ├── cli.py               # CLI interface
 │   ├── config.py            # Configuration management
