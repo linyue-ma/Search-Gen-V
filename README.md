@@ -143,7 +143,7 @@ nugget-eval --config config/my_multi.yaml --num-runs 16
 ```
 ---
 ## Result
-**Table 1. Results on the eval set:**
+**Table 1. Results on the eval set**
 | **Verifier Model** | **Rubric Precision** | **Rubric Recall** | **Rubric F1** | **Sample Precision** | **Sample Recall** | **Sample F1** | **Avg. F1** |
 |---------------------|---------------------|------------------|---------------|----------------------|-------------------|---------------|-------------|
 | Qwen3-1.7B | 0.41 | 0.49 | 0.34 | 0.48 | 0.40 | 0.32 | 0.33 |
@@ -158,7 +158,7 @@ nugget-eval --config config/my_multi.yaml --num-runs 16
 | **Search-Gen-V-4B (SFT+RL)** | **0.71** | **0.68** | **0.70** | **0.74** | **0.74** | **0.73** | **0.72** |
 | Qwen3-235B-A22B-Instruct-2507 | 0.72 | 0.73 | 0.73 | 0.76 | 0.76 | 0.76 | 0.74 |
 
-**Table 2. Accuracy comparison on verifying rubrics in longform answers from DeepResearch Bench:**
+**Table 2. Accuracy comparison on verifying rubrics in longform answers from DeepResearch Bench**
 | **Verifier Model**      | **Precision** | **Recall** | **F1** |
 |-------------------------|---------------|------------|--------|
 | Qwen3-4B                | 0.42          | 0.56       | 0.42   |
