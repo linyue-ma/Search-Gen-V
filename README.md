@@ -21,7 +21,9 @@ We have already uploaded the data and models to Hugging Face. You can access the
 - data-tain: https://huggingface.co/datasets/lnm1p/Search-Gen-V
 - data-raw: https://huggingface.co/datasets/lnm1p/Search-Gen-V-raw
 - data-eval: https://huggingface.co/datasets/lnm1p/Search-Gen-V-eval
-- model: https://huggingface.co/lnm1p/search-gen-v-4b
+- model:
+  - Search-Gen-V-4B:https://huggingface.co/lnm1p/search-gen-v-4b
+  - Search-Gen-V-1.7B-SFT:https://huggingface.co/lnm1p/search-gen-v-1.7b-sft
 
 ---
 
@@ -139,6 +141,40 @@ nugget-eval --config config/my_thinking.yaml
 # Multi-run statistical analysis  
 nugget-eval --config config/my_multi.yaml --num-runs 16
 ```
+---
+## Result
+**Table 1. Results on the eval set:**
+| **Verifier Model** | **Rubric Precision** | **Rubric Recall** | **Rubric F1** | **Sample Precision** | **Sample Recall** | **Sample F1** | **Avg. F1** |
+|---------------------|---------------------|------------------|---------------|----------------------|-------------------|---------------|-------------|
+| Qwen3-1.7B | 0.41 | 0.49 | 0.34 | 0.48 | 0.40 | 0.32 | 0.33 |
+| Qwen2.5-3B | 0.42 | 0.47 | 0.43 | 0.49 | 0.46 | 0.43 | 0.43 |
+| Qwen3-4B | 0.56 | 0.62 | 0.57 | 0.61 | 0.58 | 0.58 | 0.58 |
+| Qwen3-8B | 0.54 | 0.66 | 0.55 | 0.62 | 0.61 | 0.57 | 0.56 |
+| LLaMA-3.1-8B | 0.45 | 0.54 | 0.42 | 0.34 | 0.41 | 0.32 | 0.37 |
+| Qwen3-30B-A3B | 0.56 | 0.66 | 0.56 | 0.63 | 0.62 | 0.62 | 0.58 |
+| Qwen2.5-32B-Instruct | 0.60 | 0.67 | 0.60 | 0.67 | 0.68 | 0.64 | 0.62 |
+| **Search-Gen-V-1.7B (SFT)** | **0.63** | **0.62** | **0.62** | **0.66** | **0.66** | **0.66** | **0.64** |
+| **Search-Gen-V-4B (SFT)** | **0.70** | **0.66** | **0.68** | **0.72** | **0.72** | **0.71** | **0.70** |
+| **Search-Gen-V-4B (SFT+RL)** | **0.71** | **0.68** | **0.70** | **0.74** | **0.74** | **0.73** | **0.72** |
+| Qwen3-235B-A22B-Instruct-2507 | 0.72 | 0.73 | 0.73 | 0.76 | 0.76 | 0.76 | 0.74 |
+
+**Table 2. Accuracy comparison on verifying rubrics in longform answers from DeepResearch Bench:**
+| **Verifier Model**      | **Precision** | **Recall** | **F1** |
+|-------------------------|---------------|------------|--------|
+| Qwen3-4B                | 0.42          | 0.56       | 0.42   |
+| **Search-Gen-V-4B**     | **0.59**      | 0.57       | 0.57   |
+| Qwen3-235B-A22B         | 0.57          | **0.67**   | **0.61** |
+
+**Table 3. Results on the short-form workload, HotpotQA**
+| **Verifier Model**          | **Precision** | **Recall** | **F1** |
+|-----------------------------|---------------|------------|--------|
+| EM                          | 0.84          | **0.80**   | **0.82** |
+| Qwen3-4B                    | 0.83          | 0.70       | 0.71    |
+| **Search-Gen-V-4B**         | 0.86          | 0.76       | 0.77    |
+| Qwen3-235B-A22B             | **0.87**      | 0.78       | 0.80    |
+| EM + Qwen3-4B               | 0.94          | 0.92       | 0.93    |
+| **EM + Search-Gen-V-4B**    | 0.95          | 0.93       | 0.94    |
+| EM + Qwen3-235B-A22B        | **0.96**      | **0.94**   | **0.95** |
 ---
 
 ## Citation
